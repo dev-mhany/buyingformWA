@@ -13,6 +13,7 @@
     <input type="text" name="name" required autocomplete="off" />
     <label for="gov">محافظة:</label>
     <select name="government" id="gov">
+        <option value="Blank"></option>
         <option value="cairo">القاهرة</option>
         <option value="giza">الجيزة</option>
         <option value="alexandria">الإسكندرية</option>
@@ -48,6 +49,13 @@
     <input type="text" name="address" required autocomplete="off" />
     <label>رقم الهاتف:</label>
     <input type="tel" name="phone" required autocomplete="off" pattern="[0-9]{11}" />
+    <label for="productType">الصنف:</label>
+<select name="productType" id="productType">
+    <option value="Blank"></option>
+    <option value="PowerBank">Power Bank</option>
+    <option value="Charger">Charger</option>
+    <!-- add more options as needed -->
+</select>
     <label>الكمية المطلوبة:</label>
     <input type="number" name="quantity" min="1" max="10" step="1" />
     <label>ملاحظات:</label>
