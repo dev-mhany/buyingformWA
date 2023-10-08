@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,14 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<form id="form1" class="form" action="https://formspree.io/f/xqkvgnga" method="post">
-    <label>الإسم:</label>
-    <input type="text" name="name" required autocomplete="off" />
-    <label for="gov">محافظة:</label>
-    <select name="government" id="gov">
+    <form id="form1" class="form" action="https://formspree.io/f/xqkvgnga" method="post" target="_blank">
+        <label>الإسم:</label>
+        <input type="text" name="name" required autocomplete="off" />
+
+        <label for="gov">محافظة:</label>
+        <select name="government" id="gov">
         <option value="Blank"></option>
         <option value="cairo">القاهرة</option>
         <option value="giza">الجيزة</option>
@@ -46,27 +49,35 @@
 
     </select>
     <label>العنوان:</label>
-    <input type="text" name="address" required autocomplete="off" />
-    <label>رقم الهاتف:</label>
-    <input type="tel" name="phone" required autocomplete="off" pattern="[0-9]{11}" />
-    <label for="productType">الصنف:</label>
-<select name="productType" id="productType">
-    <option value="Blank"></option>
-    <option value="PowerBank">Power Bank</option>
-    <option value="Charger">Charger</option>
-    <!-- add more options as needed -->
-</select>
-    <label>الكمية المطلوبة:</label>
-    <input type="number" name="quantity" min="1" max="10" step="1" />
-    <label>ملاحظات:</label>
-    <input type="text" name="message" required autocomplete="off" />
-    <p>
-        الاجمالى: <span class="total" id="total"></span><br>
-        مصاريف الشحن: <span class="trans" id="trans">50</span> ج.م<br> <!-- Initialized with default value -->
-        السعر الحالى: <span class="current_price" id="total-all"></span>
-    </p>    
-    <input type="text" name="code" disabled hidden value="EG010601GEGE99">
-    <button type="submit">ارسال طلب الشراء</button>
-</form>
+        <input type="text" name="address" required autocomplete="off" />
+
+        <label>رقم الهاتف:</label>
+        <input type="tel" name="phone" required autocomplete="off" pattern="[0-9]{11}" />
+
+        <fieldset>
+            <legend>الصنف:</legend>
+            <input type="checkbox" name="productType" data-price="123" id="PowerBank">
+            <label for="PowerBank">Power Bank</label>
+            <input type="number" name="quantity" min="1" max="100" step="1" class="product-quantity" data-product="PowerBank" disabled>
+
+            <input type="checkbox" name="productType" data-price="126" id="Charger">
+            <label for="Charger">Charger</label>
+            <input type="number" name="quantity" min="1" max="100" step="1" class="product-quantity" data-product="Charger" disabled>
+            <!-- add more options as needed -->
+        </fieldset>
+
+        <label>ملاحظات:</label>
+        <input type="text" name="message" autocomplete="off" />
+
+        <p>
+            الاجمالى: <span class="total" id="total"></span><br>
+            مصاريف الشحن: <span class="trans" id="trans">50</span> ج.م<br> <!-- Initialized with default value -->
+            السعر الحالى: <span class="current_price" id="total-all"></span>
+        </p>
+
+        <input type="text" name="code" disabled hidden value="EG010601GEGE99">
+        <button type="button" onclick="sendToWhatsApp()">Send to WhatsApp</button>
+    </form>
 </body>
+
 </html>
