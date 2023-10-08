@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    width: 80vw;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #3a3a3a;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+    color: #e0e0e0;
+}
+select {
+    width: 101%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #3a3a3a;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+    color: #e0e0e0;
+}
+input[type="submit"],
+button {
+    padding: 10px 15px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #444;
+}
+
+p {
+    margin: 10px 0;
+}
+
+span {
+    font-weight: bold;
+}
+
+/* Add a smooth transition for interactive elements */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus,
+input[type="submit"]:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #666;
+}

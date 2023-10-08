@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب شراء</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<form id="form1" class="form" action="https://formspree.io/f/xqkvgnga" method="post">
+    <label>الإسم:</label>
+    <input type="text" name="name" required autocomplete="off" />
+    <label for="gov">محافظة:</label>
+    <select name="government" id="gov">
+        <option value="cairo">القاهرة</option>
+        <option value="giza">الجيزة</option>
+        <option value="alexandria">الإسكندرية</option>
+        <option value="beheira">البحيرة</option>
+        <option value="dakahlia">الدقهلية</option>
+        <option value="sharqia">الشرقية</option>
+        <option value="gharbia">الغربية</option>
+        <option value="qalyubia">القليوبية</option>
+        <option value="ismailia">الإسماعيلية</option>
+        <option value="suez">السويس</option>
+        <option value="monufia">المنوفية</option>
+        <option value="port_said">بورسعيد</option>
+        <option value="kafr_el_sheikh">كفر الشيخ</option>
+        <option value="beni_suef">بنى سويف</option>
+        <option value="damietta">دمياط</option>
+        <option value="sohag">سوهاج</option>
+        <option value="red_sea">البحر الأحمر</option>
+        <option value="asyut">أسيوط</option>
+        <option value="faiyum">الفيوم</option>
+        <option value="aswan">أسوان</option>
+        <option value="qena">قنا</option>
+        <option value="minya">المنيا</option>
+        <option value="matruh">مطروح</option>
+        <option value="luxor">الأقصر</option>
+        <option value="north_coast">الساحل الشمالي</option>
+        <option value="mahalla">المحلة</option>
+        <option value="10th_ramadan">العاشر من رمضان</option>
+        <option value="tanta">طنطا</option>
+        <option value="ain_sokhna">العين السخنة</option>
+
+    </select>
+    <label>العنوان:</label>
+    <input type="text" name="address" required autocomplete="off" />
+    <label>رقم الهاتف:</label>
+    <input type="tel" name="phone" required autocomplete="off" pattern="[0-9]{11}" />
+    <label>الكمية المطلوبة:</label>
+    <input type="number" name="quantity" min="1" max="10" step="1" />
+    <label>ملاحظات:</label>
+    <textarea name="message" required></textarea>
+    <p>
+        الاجمالى: <span class="total" id="total"></span><br>
+        مصاريف الشحن: <span class="trans" id="trans">50</span> ج.م<br> <!-- Initialized with default value -->
+        السعر الحالى: <span class="current_price" id="total-all"></span>
+    </p>    
+    <input type="text" name="code" disabled hidden value="EG010601GEGE99">
+    <button type="submit">ارسال طلب الشراء</button>
+</form>
+</body>
+</html>
