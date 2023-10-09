@@ -45,8 +45,29 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCurrentPrice();
         });
     });
-
+///////////////////////////////////////
+    const Range1 = ["cairo", "giza", "alexandria"];
+    const Range2 = ["beheira", "dakahlia", "sharqia", "gharbia", "qalyubia", "ismailia", "suez", "monufia", "port_said", "kafr_el_sheikh", "beni_suef", "damietta", "sohag"];
+    const Range3 = ["red_sea", "asyut", "faiyum", "aswan", "qena", "minya", "matruh", "luxor", "north_coast", "mahalla", "10th_ramadan", "tanta", "ain_sokhna"];
+    function getPriceByGovernorate(governorate) {
+        if (Range1.includes(governorate)) {
+            return 60;  
+        } else if (Range2.includes(governorate)) {
+            return 75;  
+        } else if (Range3.includes(governorate)) {
+            return 90;  
+        } else {
+            return 50;  // Default price
+        }
+    }
     govSelect.addEventListener('change', function() {
+        let selectedGovernorate = this.value;
+        let transPrice = getPriceByGovernorate(selectedGovernorate);
+        transPriceSpan.textContent = transPrice;
+        updateTotal();
+    });
+//////////////////////////////////////////////////    
+    /*govSelect.addEventListener('change', function() {
         let transPrice = 0;
         switch (this.value) {
             case "cairo": transPrice = 51; break;
@@ -82,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         transPriceSpan.textContent = transPrice;
         updateTotal();
-    });
+    });*/
 
     quantityInput.addEventListener('input', updateCurrentPrice);
 });
