@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     quantityInput.addEventListener('input', updateCurrentPrice);
 });
 
-function sendToWhatsApp() {
+/*function sendToWhatsApp() {
     const name = document.querySelector('input[name="name"]').value;
     const government = document.getElementById('gov').value;
     const selectedProductsCheckboxes = document.querySelectorAll('input[name="productType"]:checked');
@@ -150,4 +150,76 @@ function sendToWhatsApp() {
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/+201029384721?text=${encodedMessage}`, '_blank');
+}*/
+
+async function sendToWhatsAppAPI() {
+    const name = document.querySelector('input[name="name"]').value;
+    const government = document.getElementById('gov').value;
+    const selectedProductsCheckboxes = document.querySelectorAll('input[name="productType"]:checked');
+    const productQuantities = document.querySelectorAll('.product-quantity');
+
+    let selectedProductsDetails = [];
+    let quantities = []; // array to hold the quantities of each selected product
+    selectedProductsCheckboxes.forEach((checkbox, index) => {
+        const productName = checkbox.nextElementSibling.textContent;
+        const productPrice = parseFloat(checkbox.getAttribute('data-price'));
+        const productQuantity = productQuantities[index].value || 1;
+        const productTotal = productPrice * productQuantity;
+        selectedProductsDetails.push(`${productName} (Quantity: ${productQuantity}) - ${productTotal}`);
+        quantities.push(productQuantity); // add each product's quantity to the array
+    });
+
+    const totalQuantity = quantities.join(', '); // join quantities with a comma
+    const address = document.querySelector('input[name="address"]').value;
+    const phone = document.querySelector('input[name="phone"]').value;
+    const messageText = document.querySelector('input[name="message"]').value;
+    const total = document.getElementById('total').textContent;
+    const trans = document.getElementById('trans').textContent;
+    const totalAll = document.getElementById('total-all').textContent;
+
+    const message = `
+    Name: ${name}
+    Governorate: ${government}
+    Selected Products: 
+    ${selectedProductsDetails.join('\n')}
+    Address: ${address}
+    Phone: ${phone}
+    Total Quantity: ${totalQuantity}
+    Notes: ${messageText}
+    Total Price: ${total}
+    Shipping Fees: ${trans}
+    Current Price: ${totalAll}
+    `;
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const apiUrl = 'https://app.sendapp.cloud/api/send';
+    const data = {
+        number: "2" + phone, // Assuming this is the intended recipient's phone number
+        type: "text",
+        message: message,
+        instance_id: "6527243BCF2AA", // Replace with your instance ID
+        access_token: "6527240859e09" // Replace with your access token
+    };
+
+    try {
+        const response = await fetch(proxyurl + apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            // Handle success
+            alert('Message sent successfully!');
+        } else {
+            const result = await response.json();
+            // Handle any API-specific errors
+            alert('Error sending message: ' + result.error);
+        }
+    } catch (error) {
+        console.error('There was an error sending the message:', error);
+        alert('There was an error sending the message.');
+    }
 }
+
