@@ -151,7 +151,7 @@ function sendToWhatsApp() {
     `;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/+201029384721?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/+201153571666?text=${encodedMessage}`, '_blank');
 }
 
 /**
