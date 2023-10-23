@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const govSelect = document.querySelector('select[name="government"]');
     const productTypeCheckboxes = document.querySelectorAll('input[name="productType"]');
@@ -108,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     quantityInput.addEventListener('input', updateCurrentPrice);
 });
 
-/*function sendToWhatsApp() {
+function sendToWhatsApp() {
     const name = document.querySelector('input[name="name"]').value;
     const government = document.getElementById('gov').value;
     const selectedProductsCheckboxes = document.querySelectorAll('input[name="productType"]:checked');
@@ -150,8 +152,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/+201029384721?text=${encodedMessage}`, '_blank');
-}*/
+}
 
+/**
+ * Sends a message to the WhatsApp API.
+ *
+ * @return {Promise<void>} Returns a promise that resolves when the message is sent successfully or rejects with an error if the message fails to send.
+ */
+/*
 async function sendToWhatsAppAPI() {
     const name = document.querySelector('input[name="name"]').value;
     const government = document.getElementById('gov').value;
@@ -223,3 +231,5 @@ async function sendToWhatsAppAPI() {
     }
 }
 
+sendToWhatsAppAPI();
+*/
